@@ -85,6 +85,11 @@ public sealed class UIPanelExampleCoroutineTween : UIPanelExampleBase
             m_canvasGroup.blocksRaycasts = false; // Disable raycasting
             m_canvasGroup.alpha = 0f; // Set the initial alpha to 0
         }
+        // Check if the rect transform context is not null.
+        if (m_rectTransformContext != null)
+        {
+            m_rectTransformContext.localPosition = m_contextOffsetPosition; // Set the initial position
+        }
     }
 
     protected override void OnDisable()
@@ -116,10 +121,8 @@ public sealed class UIPanelExampleCoroutineTween : UIPanelExampleBase
     /// <returns>IEnumerator of Coroutine.</returns>
     private IEnumerator CoroutineShow(float duration, Action onDone = null)
     {
-        m_canvasGroup.alpha = 0f;
         m_canvasGroup.interactable = true;
         m_canvasGroup.blocksRaycasts = true;
-        m_rectTransformContext.localPosition = m_contextOffsetPosition;
         Coroutine coroutineFade = StartCoroutine(CoroutineFadeTween(duration, 1f));
         m_tweeningCoroutines.Add(coroutineFade);
         Coroutine coroutineMove = StartCoroutine(CoroutineMoveTween(Vector3.zero, duration));
@@ -139,7 +142,6 @@ public sealed class UIPanelExampleCoroutineTween : UIPanelExampleBase
     {
         m_canvasGroup.interactable = false;
         m_canvasGroup.blocksRaycasts = false;
-        m_rectTransformContext.localPosition = Vector3.zero;
         Coroutine coroutineFade = StartCoroutine(CoroutineFadeTween(duration, 0f));
         m_tweeningCoroutines.Add(coroutineFade);
         Coroutine coroutineMove = StartCoroutine(CoroutineMoveTween(m_contextOffsetPosition, duration));

@@ -71,7 +71,7 @@ public sealed class UIPanelExampleCoroutineTweenEasing : UIPanelExampleBase
             return false;
         }
         StopAllTweeningCoroutine();
-        Coroutine coroutine = StartCoroutine(CoroutineHide(m_duration, Kryz.Tweening.EasingFunctions.OutExpo, () => { m_tweeningCoroutines.Clear(); }));
+        Coroutine coroutine = StartCoroutine(CoroutineHide(m_duration, Kryz.Tweening.EasingFunctions.OutCubic, () => { m_tweeningCoroutines.Clear(); }));
         return true;
     }
 
@@ -84,6 +84,11 @@ public sealed class UIPanelExampleCoroutineTweenEasing : UIPanelExampleBase
             m_canvasGroup.interactable = false; // Disable interaction
             m_canvasGroup.blocksRaycasts = false; // Disable raycasting
             m_canvasGroup.alpha = 0f; // Set the initial alpha to 0
+        }
+        // Check if the rect transform context is not null.
+        if (m_rectTransformContext != null)
+        {
+            m_rectTransformContext.localPosition = m_contextOffsetPosition; // Set the initial position
         }
     }
 
@@ -116,10 +121,8 @@ public sealed class UIPanelExampleCoroutineTweenEasing : UIPanelExampleBase
     /// <returns>IEnumerator of Coroutine.</returns>
     private IEnumerator CoroutineShow(float duration, Func<float, float> easing = null, Action onDone = null)
     {
-        m_canvasGroup.alpha = 0f;
         m_canvasGroup.interactable = true;
         m_canvasGroup.blocksRaycasts = true;
-        m_rectTransformContext.localPosition = m_contextOffsetPosition;
         Coroutine coroutineFade = StartCoroutine(CoroutineFadeTween(duration, 1f, easing));
         m_tweeningCoroutines.Add(coroutineFade);
         Coroutine coroutineMove = StartCoroutine(CoroutineMoveTween(Vector3.zero, duration, easing));
@@ -139,7 +142,6 @@ public sealed class UIPanelExampleCoroutineTweenEasing : UIPanelExampleBase
     {
         m_canvasGroup.interactable = false;
         m_canvasGroup.blocksRaycasts = false;
-        m_rectTransformContext.localPosition = Vector3.zero;
         Coroutine coroutineFade = StartCoroutine(CoroutineFadeTween(duration, 0f, easing));
         m_tweeningCoroutines.Add(coroutineFade);
         Coroutine coroutineMove = StartCoroutine(CoroutineMoveTween(m_contextOffsetPosition, duration, easing));
