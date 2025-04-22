@@ -2,6 +2,12 @@
 
 This project demonstrates various ways to create tween animations in Unity. It includes examples such as using coroutines and other techniques to achieve smooth and customizable animations.
 
+Below is a preview of the tweening animation example included in this project:
+
+<div align="center">
+  <img src="Resources/image01.gif" alt="Tweening Example" width="50%">
+</div>
+
 ## Features
 
 - Examples of tween animations using coroutines.
