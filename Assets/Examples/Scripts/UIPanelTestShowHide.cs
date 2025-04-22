@@ -45,6 +45,50 @@ public sealed class UIPanelTestShowHide : UserInterfaceBehaviour
         }
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        // Update the button state based on the initial state of the target panel example.
+        UpdateButtonState();
+    }
+
+    private void Update()
+    {
+        // Check if the target panel example is not null.
+        if (m_targetPanelExample == null)
+        {
+            return;
+        }
+        // For testing purposes, we can use the space key to toggle show and hide the panel.
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (m_targetPanelExample.IsShowing())
+            {
+                _ = m_targetPanelExample.Hide();
+            }
+            else
+            {
+                _ = m_targetPanelExample.Show();
+            }
+            UpdateButtonState();
+        }
+    }
+
+    /// <summary>
+    /// Update the state of the buttons based on the target panel example's state.
+    /// </summary>
+    private void UpdateButtonState()
+    {
+        if (m_buttonShow != null)
+        {
+            m_buttonShow.interactable = !m_targetPanelExample.IsShowing();
+        }
+        if (m_buttonHide != null)
+        {
+            m_buttonHide.interactable = m_targetPanelExample.IsShowing();
+        }
+    }
+
     /// <summary>
     /// (Delegate) Called when the show button is clicked.
     /// </summary>
@@ -55,6 +99,7 @@ public sealed class UIPanelTestShowHide : UserInterfaceBehaviour
             return;
         }
         _ = m_targetPanelExample.Show();
+        UpdateButtonState();
     }
 
     /// <summary>
@@ -67,5 +112,6 @@ public sealed class UIPanelTestShowHide : UserInterfaceBehaviour
             return;
         }
         _ = m_targetPanelExample.Hide();
+        UpdateButtonState();
     }
 }

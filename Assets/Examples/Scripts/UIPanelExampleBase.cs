@@ -47,4 +47,13 @@ public abstract class UIPanelExampleBase : UserInterfaceBehaviour
         m_isShowing = false;
         return true;
     }
+
+    /// <summary>
+    /// Determine if the panel is currently showing or not.
+    /// </summary>
+    /// <returns>True if the panel is showing, false if it is hidden.</returns>
+    public bool IsShowing()
+    {
+        return m_isShowing;
+    }
 }
