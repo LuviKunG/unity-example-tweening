@@ -8,6 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Examples/01-CoroutineTween/Scene01.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Examples/02-CoroutineTweenEasing/Scene02.unity
+    guid: eec0adb580c456a43a34b98b52b33659
+  - enabled: 1
+    path: Assets/Examples/03-DOTweenTween/Scene03.unity
+    guid: e9fff26294fb707488b9a816f7aa6662
+  - enabled: 1
+    path: Assets/Examples/04-DOTweenSequence/Scene04.unity
+    guid: 674489aa84cabff40b6b2645163f9b73
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

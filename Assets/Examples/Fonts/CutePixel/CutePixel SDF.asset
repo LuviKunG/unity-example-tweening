@@ -129,7 +129,7 @@ MonoBehaviour:
     m_PointSize: 209
     m_Scale: 2
     m_UnitsPerEM: 1024
-    m_LineHeight: 128
+    m_LineHeight: 192
     m_AscentLine: 156.75
     m_CapLine: 105
     m_MeanLine: 79
