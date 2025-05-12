@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 62d36670ab495824a8ba73a720b1a80f
+  - enabled: 1
     path: Assets/Examples/01-CoroutineTween/Scene01.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
